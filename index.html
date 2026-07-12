@@ -314,44 +314,100 @@
   }
   .quote footer{ margin-top:28px; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color: var(--gold-dim); }
 
-  /* ===================== CONTACT / CTA ===================== */
-  .contact-grid{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(50px, 8vw, 120px);
+  /* ===================== CONCIERGE CTA ===================== */
+  .concierge{
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
   }
-  .contact-info dl{ display:flex; flex-direction:column; gap:26px; }
-  .contact-info dt{ font-size:10px; letter-spacing:0.24em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:6px; }
-  .contact-info dd{ font-size:16px; color:var(--bone); font-weight:300; }
-  .contact-info a{ position:relative; }
-  .contact-info a::after{ content:''; position:absolute; left:0; bottom:-2px; width:100%; height:1px; background:var(--slate); transition: background .4s var(--ease); }
-  .contact-info a:hover{ color: var(--gold-bright); }
-  .contact-info a:hover::after{ background: var(--gold); }
+  .concierge .eyebrow{ display:inline-block; margin-bottom:24px; }
+  .concierge h2{
+    font-size: clamp(30px, 4.4vw, 54px);
+    line-height: 1.25;
+    color: var(--bone);
+    font-weight:400;
+    margin-bottom: 20px;
+  }
+  .concierge h2 .accent{ color: var(--gold); font-style: italic; }
+  .concierge p.sub{
+    color: var(--bone-dim);
+    font-size: 15px;
+    max-width: 460px;
+    margin: 0 auto 52px;
+  }
 
-  form{ display:flex; flex-direction:column; gap:26px; }
-  .field{ position:relative; }
-  .field input, .field textarea{
-    width:100%; background:transparent; border:none; border-bottom: 1px solid var(--slate);
-    color: var(--bone); font-family:'Montserrat',sans-serif; font-weight:300; font-size:15px;
-    padding: 12px 0; outline:none; resize:none;
-    transition: border-color .4s var(--ease);
+  .concierge-details{
+    display:flex; justify-content:center; gap: clamp(28px, 6vw, 64px);
+    margin-top: 40px;
+    flex-wrap:wrap;
   }
-  .field textarea{ min-height:90px; }
-  .field label{
-    position:absolute; left:0; top:12px; color: var(--bone-dim); font-size:15px; font-weight:300;
-    pointer-events:none; transition: all .3s var(--ease);
+  .concierge-details div{ text-align:center; }
+  .concierge-details dt{
+    font-size:10px; letter-spacing:0.24em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:8px;
   }
-  .field input:focus + label,
-  .field input:not(:placeholder-shown) + label,
-  .field textarea:focus + label,
-  .field textarea:not(:placeholder-shown) + label{
-    top: -10px; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color: var(--gold);
+  .concierge-details dd{ font-size:15px; color:var(--bone); font-weight:300; }
+
+  .call-btn{
+    position: relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 16px;
+    width: 100%;
+    padding: clamp(26px, 4vw, 34px) 24px;
+    background: transparent;
+    border: 1px solid var(--gold-dim);
+    color: var(--bone);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    cursor: pointer;
+    overflow: hidden;
+    isolation: isolate;
+    transition: color 0.55s var(--ease), border-color 0.55s var(--ease);
   }
-  .field input:focus, .field textarea:focus{ border-color: var(--gold); }
-  form button{
-    align-self:flex-start; margin-top:8px;
-    background:none; cursor:pointer;
-    font-family:'Montserrat',sans-serif;
+  .call-btn::before{
+    content:'';
+    position:absolute; inset:0;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index:-1;
+    transition: transform 0.6s var(--ease);
+  }
+  .call-btn:hover, .call-btn:focus-visible{
+    color: var(--obsidian);
+    border-color: var(--gold);
+  }
+  .call-btn:hover::before, .call-btn:focus-visible::before{
+    transform: scaleX(1);
+  }
+  .call-btn svg{
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+    transition: transform 0.5s var(--ease);
+  }
+  .call-btn:hover svg{ transform: rotate(8deg) scale(1.1); }
+
+  .call-btn .phone-number{
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    font-size: 15px;
+    opacity: 0.75;
+    margin-left: 6px;
+  }
+
+  .concierge-note{
+    margin-top: 22px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--bone-dim);
+    opacity: 0.7;
   }
 
   /* ===================== FOOTER ===================== */
@@ -381,7 +437,9 @@
     .showcase.reverse .showcase-media{ order:0; }
     .showcase-media{ aspect-ratio: 16/11; }
     .marks{ grid-template-columns: repeat(2,1fr); gap:32px; }
-    .contact-grid{ grid-template-columns:1fr; }
+    .concierge-details{ gap: 32px; }
+    .call-btn{ letter-spacing: 0.2em; font-size: 12px; flex-wrap: wrap; gap: 10px; }
+    .call-btn .phone-number{ width:100%; margin-left:0; }
   }
 
   .mobile-menu{
@@ -400,7 +458,7 @@
 <body>
 
 <header id="siteHeader">
-  <a href="#top" class="brand">RAHMA Decor<span>.</span></a>
+  <a href="#top" class="brand">RAHMA<span>.</span></a>
   <nav class="links">
     <a href="#atelier">Atelier</a>
     <a href="#craft">Craft</a>
@@ -424,7 +482,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-media">
-      <img src="Rahma.jpg" alt="Dark luxury automobile detail" loading="eager">
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=80" alt="Dark luxury automobile detail" loading="eager">
     </div>
     <div class="hero-content">
       <span class="eyebrow">Addis Ababa — Since Inception</span>
@@ -445,10 +503,10 @@
   <!-- EDITORIAL BLEED GALLERY -->
   <div class="bleed-row">
     <div class="bleed-cell reveal">
-      <img src="Owner.PNG" alt="Matte black car exterior" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=80" alt="Matte black car exterior" loading="lazy">
       <div class="bleed-caption">
         <span class="eyebrow">Exterior Finishing</span>
-        <h3 class="serif">Wraps</h3>
+        <h3 class="serif">Matte, Chrome & Wrap</h3>
       </div>
     </div>
     <div class="bleed-cell reveal">
@@ -546,42 +604,32 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONCIERGE CTA -->
   <section id="contact">
-    <div class="wrap contact-grid">
-      <div class="contact-info reveal">
-        <div class="kicker"><span class="num">IV.</span><span class="rule"></span></div>
-        <h2 class="serif" style="font-size:clamp(28px,3.6vw,44px); margin-bottom:36px; font-weight:400;">Visit the Atelier</h2>
-        <dl>
-          <div>
-            <dt>Location</dt>
-            <dd>Zagora Hotel, Bethel, Addis Ababa</dd>
-          </div>
-          <div>
-            <dt>Phone</dt>
-            <dd><a href="tel:+251941569921">+251 94 156 9921</a></dd>
-          </div>
-          <div>
-            <dt>Hours</dt>
-            <dd>Daily, until 7:00 PM</dd>
-          </div>
-        </dl>
+    <div class="wrap concierge reveal">
+      <span class="eyebrow">Concierge</span>
+      <h2 class="serif">Ready to <span class="accent">elevate</span> your vehicle?</h2>
+      <p class="sub">Schedule a personal consultation with our atelier. No forms, no waiting — speak with us directly.</p>
+
+      <a href="tel:+251941569921" class="call-btn" aria-label="Call Rahma Car Decor to secure your appointment">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        Secure Your Appointment
+        <span class="phone-number">+251 94 156 9921</span>
+      </a>
+      <p class="concierge-note">Tap to call directly — available daily until 7:00 PM</p>
+
+      <div class="concierge-details">
+        <div>
+          <dt>Location</dt>
+          <dd>Zagora Hotel, Bethel, Addis Ababa</dd>
+        </div>
+        <div>
+          <dt>Hours</dt>
+          <dd>Daily, until 7:00 PM</dd>
+        </div>
       </div>
-      <form class="reveal" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Sent — Thank You';">
-        <div class="field">
-          <input type="text" id="name" placeholder=" " required>
-          <label for="name">Full Name</label>
-        </div>
-        <div class="field">
-          <input type="tel" id="phone" placeholder=" " required>
-          <label for="phone">Phone Number</label>
-        </div>
-        <div class="field">
-          <textarea id="message" placeholder=" "></textarea>
-          <label for="message">Tell us about your vehicle</label>
-        </div>
-        <button type="submit" class="btn-outline">Send Enquiry</button>
-      </form>
     </div>
   </section>
 
